@@ -3,6 +3,8 @@ package pkg;
 import java.util.ArrayList;
 import java.util.List;
 
+import pkg.Movimiento.signo;
+
 
 
 public class Cuenta {
@@ -19,12 +21,35 @@ public class Cuenta {
 	public double getSaldo() {
 		return saldo;
 	}
+	public void setSaldo(double saldo) {
+		this.saldo=saldo;
+	}
+	public void obtenerDatos() {
+		System.out.println("Número de cuenta: "+mNumero);
+		System.out.println("Titular: "+nTitular);
+		System.out.println("Saldo inicial: "+saldo+" euros");
+		
+	}
 	public void ingresar(double x) {
-		saldo=-50;
+		obtenerDatos();
+		saldo=saldo+x;
+		Movimiento m=new Movimiento(x, signo.H, "Ingreso de "+x+" euros");
+		mMovimientos.add(m);
+		System.out.println("Ingreso de "+x+" euros");
+		System.out.println("Saldo actual: "+saldo+" euros\n");
 	}
 
 	public void retirar(double x) {
-		saldo=-150;
+		obtenerDatos();
+		if(saldo-x>=-500) {
+			saldo=saldo-x;
+			Movimiento m=new Movimiento(x, signo.D, "Retirada de "+x+" euros");
+			mMovimientos.add(m);
+			System.out.println("Retirada de "+x+" euros");
+			
+		}else
+			System.out.println("Fallo retirada de "+x+" euros");
+		System.out.println("Saldo actual: "+saldo+" euros\n");
 	}
 	
 }
