@@ -11,11 +11,12 @@ import org.junit.jupiter.api.Test;
 import pkg.Cuenta;
 
 class CuentaTest {
-	
+	static Cuenta cuenta12345;
 	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		cuenta12345=new Cuenta("12345", "Loli", 50);
 		
 	}
 
